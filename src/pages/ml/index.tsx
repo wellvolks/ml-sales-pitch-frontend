@@ -6,12 +6,15 @@ import {Button} from "react-bootstrap";
 import {Container, Row, Col, CardBody, Card, Label, Input, Form} from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import dynamic from 'next/dynamic';
+import {  EditorState, ContentState } from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
+
 const Editor = dynamic(
     () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
     { ssr: false }
 )
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
-import {  EditorState, ContentState } from "draft-js";
+
+
 
 interface DataProps {}
 interface ILabelValue {
@@ -58,6 +61,7 @@ const MercadoLivre: NextPage<DataProps> = ({}) => {
         return EditorState.createWithContent(ContentState.createFromText(text));
     };
 
+    // @ts-ignore
     const ControlledEditor = ({ htmlContent }) => {
         // define the local state, using the createState callback to create the initial value
         const [editorState, setEditorState] = useState(createState(htmlContent));
