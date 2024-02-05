@@ -58,7 +58,9 @@ const MercadoLivre: NextPage<DataProps> = ({}) => {
     }
 
     const createState = (text: any) => {
-        return EditorState.createWithContent(ContentState.createFromText(text));
+        let ret = ContentState.createFromText(text);
+        console.log(text);
+        return EditorState.createWithContent(ret);
     };
 
     // @ts-ignore
@@ -94,8 +96,8 @@ const MercadoLivre: NextPage<DataProps> = ({}) => {
         console.log(requestOptions)
 
         async function getSalesPitchInfo() {
-            const res = await fetch('http://localhost:8000/ml/prompt/ans', requestOptions)
-            // const res = await fetch('https://open-api.gogeo.io/ml/prompt/ans', requestOptions)
+            // const res = await fetch('http://localhost:8000/ml/prompt/ans', requestOptions)
+            const res = await fetch('https://open-api.gogeo.io/ml/prompt/ans', requestOptions)
 
             if (res.ok){
                 let json_resp = await res.json();
@@ -112,7 +114,8 @@ const MercadoLivre: NextPage<DataProps> = ({}) => {
     }
 
     function  abc(){
-        const url = 'https://wa.me//5562982040461?text=' + encodeURI(salesPitch)
+
+        const url = 'https://wa.me//5562992547033?text=' + encodeURI(salesPitch)
 
         console.log(url);
 
